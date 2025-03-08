@@ -23,6 +23,7 @@
     </div>
 </div>
 
+@foreach ($cartas as $carta)
 <div class="carta">
     <h2 class="nombre">{{ $carta->nombre }}</h2>
     <img src="{{ asset('img/' . $carta->imagen) }}" alt="Imagen de la carta" class="imagen-personaje mx-auto">
@@ -44,12 +45,19 @@
     </div>
     @elseif ($carta->tipo === 'object')
     <div class="stats">
-        <p>Efecto: {{ $carta->cartaable->descripcion }}</p>
+        <p>Efecto: </p>
         @if (isset($carta->cartaable->vida))
             <p>Recupera {{ $carta->cartaable->vida }} puntos de vida</p>
+        @elseif (isset($carta->cartaable->defensa))
+            <p>Obtiene {{ $carta->cartaable->defensa }} puntos de defensa</p>
+        @elseif (isset($carta->cartaable->ataque))
+            <p>Obtiene {{ $carta->cartaable->ataque }} puntos de ataque</p>
+        @elseif (isset($carta->cartaable->nivel))
+            <p>Aumenta {{ $carta->cartaable->nivel }} niveles</p>
         @endif
     </div>
     @endif
 </div>
+@endforeach
 </body>
 </html>

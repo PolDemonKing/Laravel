@@ -14,6 +14,11 @@ class EscudoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Escudo::factory()->create([
+            'nombre' => 'Escudo_de_madera',
+            'descripcion' => 'Un escudo de madera que se usa en los entrenamientos infantiles.',
+            'defensa' => 2,
+            'tipo' => 'object',
+        ]);
     }
 }

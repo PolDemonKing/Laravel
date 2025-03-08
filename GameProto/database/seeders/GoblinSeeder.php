@@ -21,6 +21,7 @@ class GoblinSeeder extends Seeder
             'defensa' => 3,
             'nivel' => 1,
             'tipo' => 'monster',
+            'descripcion' => 'Una criatura verde y muy argresiva, se mueven en grupo y son medio inteligentes.',
         ]);
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("defensa");
             $table->integer("nivel");
             $table->string("tipo");
+            $table->string("descripcion");
             $table->timestamps();
         });
     }

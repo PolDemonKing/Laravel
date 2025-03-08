@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CartaController extends Controller
 {
     public function view() {
-        $carta = Carta::with('cartaable')->first();
-        return view('battleground', compact('carta'));
+        $cartas = Carta::with('cartaable')->get();
+        return view('battleground', compact('cartas'));
     }
 }

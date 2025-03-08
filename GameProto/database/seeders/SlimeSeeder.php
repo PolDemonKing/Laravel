@@ -21,6 +21,7 @@ class SlimeSeeder extends Seeder
             'defensa' => 3,
             'nivel' => 1,
             'tipo' => 'monster',
+            'descripcion' => 'Una criatura viscosa y gelatinosa.',
         ]);
     }
 }

@@ -14,6 +14,11 @@ class EspadaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Espada::factory()->create([
+            'nombre' => 'Espada_de_madera',
+            'descripcion' => 'Un espada de madera que se usa en los entrenamientos infantiles.',
+            'ataque' => 2,
+            'tipo' => 'object',
+        ]);
     }
 }

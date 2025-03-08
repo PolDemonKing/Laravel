@@ -10,7 +10,7 @@ class Slime extends Model
     use HasFactory;
 
     protected $table = 'slimes'; 
-    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo'];
+    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo', 'descripcion'];
 
     public function carta()
     {

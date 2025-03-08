@@ -10,7 +10,7 @@ class Goblin extends Model
     use HasFactory;
     
     protected $table = 'goblins'; 
-    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo'];
+    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo', 'descripcion'];
 
     public function carta()
     {

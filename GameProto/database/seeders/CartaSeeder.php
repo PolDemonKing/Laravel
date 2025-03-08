@@ -5,26 +5,36 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Carta;
 use App\Models\Slime;
+use App\Models\Espada;
+use App\Models\Escudo;
+use Illuminate\Support\Str;
 
 class CartaSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds.  
      */
     public function run(): void
     {
-        $slime = Slime::first(); 
+        $modelos = [
+            Slime::class,
+            Espada::class,
+            Escudo::class,
+        ];
 
-        if ($slime) {
+        foreach ($modelos as $modelo) {
+            $entidades = $modelo::all();
+
+        foreach ($entidades as $entidad) {
             Carta::create([
-                'nombre' => $slime->nombre,
-                'descripcion' => 'Una criatura viscosa y gelatinosa.',
-                'imagen' => 'slime.jpg',
-                'id' => $slime->id,
-                'tipo' => $slime->tipo,
-                'cartaable_id' => $slime->id,
-                'cartaable_type' => Slime::class
+                'nombre' => $entidad->nombre,
+                'descripcion' => $entidad->descripcion,
+                'imagen' => $entidad->nombre . '.png',
+                'tipo' => $entidad->tipo,
+                'cartaable_id' => $entidad->id,
+                'cartaable_type' => $modelo
             ]);
         }
+    }
     }
 }
