@@ -10,7 +10,7 @@ class Personaje extends Model
     use HasFactory;
 
     protected $table = 'personajes'; 
-    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo'];
+    protected $fillable = ['nombre', 'vida', 'ataque', 'defensa', 'nivel', 'tipo', 'descripcion'];
 
     public function carta()
     {

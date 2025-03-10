@@ -14,6 +14,14 @@ class PersonajeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Personaje::factory()->create([
+            'nombre' => 'Mage',
+            'vida' => 24,
+            'ataque' => 7,
+            'defensa' => 3,
+            'nivel' => 1,
+            'tipo' => 'player',
+            'descripcion' => 'The Little Mage',
+        ]);
     }
 }

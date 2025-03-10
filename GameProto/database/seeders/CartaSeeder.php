@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Carta;
+use App\Models\Goblin;
 use App\Models\Slime;
 use App\Models\Espada;
 use App\Models\Escudo;
+use App\Models\Personaje;
 use Illuminate\Support\Str;
 
 class CartaSeeder extends Seeder
@@ -20,6 +22,8 @@ class CartaSeeder extends Seeder
             Slime::class,
             Espada::class,
             Escudo::class,
+            Goblin::class,
+            Personaje::class,
         ];
 
         foreach ($modelos as $modelo) {

@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
 
         // Opción 2: Verificar si el usuario ya existe antes de crearlo
         User::firstOrCreate(
-            ['email' => 'test@example.com'], // Busca por email
+            ['email' => 'pablo.ortiz.lopez@ibadia.cat'], // Busca por email
             [
-                'name' => 'Test User',
-                'password' => bcrypt('password'), // Define un password por defecto
+                'name' => 'PolDemonKing',
+                'password' => 'Pablo021', // Define un password por defecto
             ]
         );
     }

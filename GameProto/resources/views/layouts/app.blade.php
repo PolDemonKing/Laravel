@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-[url('/img/mountain.jpg')] min-h-screen">
-        <div class="min-h-screen">
+    <body class="min-h-screen font-sans antialiased bg-[url('/img/mountain.jpg')]">
+        <div>
             @include('layouts.navigation')
 
             <!-- Page Heading -->
