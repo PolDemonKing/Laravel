@@ -12,7 +12,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/battleground', [CartaController::class, 'view']);
+Route::get('/battleground', [CartaController::class, 'view'])->middleware(['auth'])->name('battleground');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
