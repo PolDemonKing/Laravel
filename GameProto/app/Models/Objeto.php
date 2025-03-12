@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\Efecto;
 
-class Espada extends Model
+class Objeto extends Model
 {
     use HasFactory;
-    
-    protected $table = 'espadas';
-    protected $fillable = ['nombre', 'descripcion', 'tipo', 'ataque'];
+
+    protected $casts = [
+        'efecto' => Efecto::class,
+    ];
+
+    protected $table = 'objetos';
+    protected $fillable = ['nombre', 'descripcion', 'tipo', 'efecto', 'efectCant', 'coste'];
 
     public function carta()
     {

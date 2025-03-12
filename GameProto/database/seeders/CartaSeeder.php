@@ -4,11 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Carta;
-use App\Models\Goblin;
-use App\Models\Slime;
-use App\Models\Espada;
-use App\Models\Escudo;
-use App\Models\Personaje;
+use App\Models\Objeto;
+use App\Models\Entity;
 use Illuminate\Support\Str;
 
 class CartaSeeder extends Seeder
@@ -19,11 +16,8 @@ class CartaSeeder extends Seeder
     public function run(): void
     {
         $modelos = [
-            Slime::class,
-            Espada::class,
-            Escudo::class,
-            Goblin::class,
-            Personaje::class,
+            Objeto::class,
+            Entity::class,
         ];
 
         foreach ($modelos as $modelo) {

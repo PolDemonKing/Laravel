@@ -13,12 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,       // Usuarios
-            EscudoSeeder::class,     // Escudos
-            EspadaSeeder::class,     // Espadas
-            PocionSeeder::class,     // Pociones
-            GoblinSeeder::class,     // Goblins
-            SlimeSeeder::class,      // Slimes
-            PersonajeSeeder::class,  // Personajes
+            ObjetoSeeder::class,
+            EntitySeeder::class,
             CartaSeeder::class,
         ]);
     }
