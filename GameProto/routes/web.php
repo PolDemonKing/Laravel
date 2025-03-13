@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EntityController;
+use App\Http\Controllers\ObjetoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,6 +15,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/battleground', [CartaController::class, 'view'])->middleware(['auth'])->name('battleground');
+
+Route::get('/cardMaker', function () { return view('cardMaker');})->middleware(['auth'])->name('cardMaker');
+
+Route::resource('/entities', EntityController::class);
+Route::resource('/objetos', ObjetoController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
