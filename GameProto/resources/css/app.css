@@ -30,8 +30,7 @@ body {
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
     gap: 10px;
-    display: flex;
-    flex-direction: column;
+    display: block;
 }
 
 .cartaMain {
@@ -120,4 +119,12 @@ body {
     align-items: center;
     width: 100px;
     height: 100px;
+}
+
+#mostrarCarta {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
 }
