@@ -15,6 +15,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/battleground', [CartaController::class, 'view'])->middleware(['auth'])->name('battleground');
+Route::get('/cardBook', [CartaController::class, 'viewCards'])->middleware(['auth'])->name('cardBook');
 
 Route::get('/cardMaker', function () { return view('cardMaker');})->middleware(['auth'])->name('cardMaker');
 

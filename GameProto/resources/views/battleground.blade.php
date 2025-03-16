@@ -27,7 +27,7 @@
             <div class="p-4 flex justify-center items-center"></div>
 
             <!-- Columna derecha: Enemigos -->
-            <div class="p-4 flex justify-center items-center gap-4">
+            <div class="p-4 grid justify-center items-center gap-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 @foreach ($cartas as $carta)
                     @if ($carta->tipo === 'monster')
                         <div class="carta p-4 border-4 border-white rounded-lg bg-gray-800 text-white text-center">
