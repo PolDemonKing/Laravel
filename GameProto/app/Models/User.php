@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function cartas()
+    {
+        return $this->belongsToMany(Carta::class);
+    }
 }

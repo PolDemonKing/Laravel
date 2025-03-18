@@ -16,4 +16,9 @@ class Carta extends Model
     {
         return $this->morphTo();
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
