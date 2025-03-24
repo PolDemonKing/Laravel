@@ -58,24 +58,6 @@
     </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const contenedorCartas = document.getElementById("contenedorCartas");
-    const boton = document.querySelector(".boton");
-    const mostrarCarta = document.querySelector("#mostrarCarta");
+@component('components.battlegroundScript') @endcomponent
 
-    // Crear array de cartas como nodos
-    let cartas = Array.from(contenedorCartas.children);
-
-    // Evento para generar cartas
-    boton.addEventListener("click", () => {
-        if (cartas.length > 0 && mostrarCarta.children.length < 6) {
-            const randNum = Math.floor(Math.random() * cartas.length);
-            const cartaSeleccionada = cartas.splice(randNum, 1)[0];
-
-            mostrarCarta.appendChild(cartaSeleccionada);
-        }
-    });
-});
-</script>
 @endsection

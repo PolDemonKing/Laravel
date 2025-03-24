@@ -128,3 +128,22 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.carta {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el ratón */
+.carta:hover {
+    transform: scale(1.1); /* Agranda la carta ligeramente */
+    border: 2px solid #ffcc00; /* Borde dorado */
+    cursor: pointer;
+}
+
+/* Efecto al hacer click */
+.carta.seleccionada {
+    border: 3px solid #ff6600; /* Borde naranja más grueso */
+    background-color: rgba(255, 102, 0, 0.2); /* Fondo sutil */
+    box-shadow: 0px 0px 15px rgba(255, 102, 0, 0.7); /* Efecto de brillo */
+}
+

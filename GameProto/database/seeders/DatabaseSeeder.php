@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ObjetoSeeder::class,
             EntitySeeder::class,
             CartaSeeder::class,
+            PartidaSeeder::class,
         ]);
     }
 }

@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Carta::class);
     }
+
+    public function partida()
+    {
+        return $this->hasOne(Partida::class);
+    }
 }

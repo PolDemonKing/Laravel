@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         // Opción 1: Eliminar los registros antes de insertar (solo en desarrollo)
-        DB::table('users')->truncate();
+        DB::table('users')->delete();
 
         // Opción 2: Verificar si el usuario ya existe antes de crearlo
         User::firstOrCreate(

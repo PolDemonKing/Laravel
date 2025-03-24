@@ -5,6 +5,7 @@ use App\Http\Controllers\CartaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\ObjetoController;
+use App\Http\Controllers\PartidaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +19,9 @@ Route::get('/battleground', [CartaController::class, 'view'])->middleware(['auth
 Route::get('/cardBook', [CartaController::class, 'viewCards'])->middleware(['auth'])->name('cardBook');
 
 Route::get('/cardMaker', function () { return view('cardMaker');})->middleware(['auth'])->name('cardMaker');
+
+Route::get('/partida/cargar', [PartidaController::class, 'cargarPartida'])->middleware('auth');
+Route::post('/partida/guardar', [PartidaController::class, 'guardarPartida'])->middleware('auth');
 
 Route::resource('/entities', EntityController::class);
 Route::resource('/objetos', ObjetoController::class);

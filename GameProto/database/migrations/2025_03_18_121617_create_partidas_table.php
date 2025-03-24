@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('partidas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('ronda');
+            $table->integer('turno');
+            $table->integer('maxEnergy');
+            $table->integer('energia');
+            $table->json('datos')->nullable();
             $table->timestamps();
         });
     }
