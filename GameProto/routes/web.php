@@ -20,6 +20,10 @@ Route::get('/cardBook', [CartaController::class, 'viewCards'])->middleware(['aut
 
 Route::get('/cardMaker', function () { return view('cardMaker');})->middleware(['auth'])->name('cardMaker');
 
+Route::get('/startScreen', function () {
+    return view('startScreen');
+});
+
 Route::get('/partida/cargar', [PartidaController::class, 'cargarPartida'])->middleware('auth');
 Route::post('/partida/guardar', [PartidaController::class, 'guardarPartida'])->middleware('auth');
 

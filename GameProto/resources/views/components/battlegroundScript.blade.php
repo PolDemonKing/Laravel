@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ mano: mano.map(carta => carta.dataset.id) }),
+            body: JSON.stringify({
+                mano: mano.map(carta => carta.dataset.id)
+            }),
         });
     }
 
@@ -27,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (data.partida) {
                     let partida = JSON.parse(data.partida.datos);
                     partida.mano.forEach(cartaID => {
-                        let carta = document.querySelector(`#contenedorCartas [data-id='${cartaID}']`);
+                        let carta = document.querySelector(
+                            `#contenedorCartas [data-id='${cartaID}']`);
                         if (carta) {
                             let nuevaCarta = carta.cloneNode(true);
                             mostrarCarta.appendChild(nuevaCarta);
@@ -39,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     boton.addEventListener("click", () => {
-        if (cartas.length === 0) {
+        cartas = cartas.filter(carta => !pila_descartes.includes(carta));
+        if (cartas.length === 0) { // && mano.length === 0 Añadir esto si se quiere agotar la mano tambien antes de generar nuevas cartas.
             // Si no quedan cartas, reabastecemos la baraja con los descartes
             cartas = [...pila_descartes];
             pila_descartes = [];
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let cartaClickeada = event.target.closest(".carta");
         if (!cartaClickeada) return;
 
-        if (event.ctrlKey) {  // Usamos "Ctrl + Click" para descartar
+        if (event.ctrlKey) { // Usamos "Ctrl + Click" para descartar
             mano = mano.filter(carta => carta !== cartaClickeada);
             pila_descartes.push(cartaClickeada);
             cartaClickeada.remove();

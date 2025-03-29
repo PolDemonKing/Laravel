@@ -24,15 +24,14 @@ class PartidaController extends Controller
         $partida = Partida::updateOrCreate(
             ['user_id' => Auth::id()],
             [
-                'ronda' => $request->input('ronda'),
-                'turno' => $request->input('turno'),
-                'energia' => $request->input('energia'),
-                'maxEnergy' => $request->input('maxEnergy'),
-                'datos' => json_encode($request->input('datos'))
+                'ronda' => $request->input('ronda') ?? 1,
+                'turno' => $request->input('turno') ?? 1,
+                'energia' => $request->input('energia') ?? 3,
+                'maxEnergy' => $request->input('maxEnergy') ?? 3,
+                'datos' => json_encode($request->input('datos') ?? [])
             ]
         );
     
         return response()->json(['success' => 'Partida guardada correctamente']);
     }
-    
 }
