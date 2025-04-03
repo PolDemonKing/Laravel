@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('partidas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('player_card_id')->constrained('cartas')->onDelete('cascade'); // ID de la carta del jugador
             $table->integer('ronda')->default(1);
             $table->integer('turno')->default(1);
-            $table->integer('maxEnergy')->default(3);
+            $table->integer('energiaMax')->default(3); // Consistencia con el controlador
             $table->integer('energia')->default(3);
-            $table->json('datos')->nullable();
+            $table->json('enemigos')->nullable(); // IDs de cartas enemigos
+            $table->json('objetos')->nullable(); // IDs de cartas objetos
             $table->timestamps();
         });
     }

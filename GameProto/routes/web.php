@@ -22,7 +22,7 @@ Route::get('/cardMaker', function () { return view('cardMaker');})->middleware([
 
 Route::get('/startScreen', function () {
     return view('startScreen');
-});
+})->middleware(['auth'])->name('startScreen');
 
 Route::get('/partida/cargar', [PartidaController::class, 'cargarPartida'])->middleware('auth');
 Route::post('/partida/guardar', [PartidaController::class, 'guardarPartida'])->middleware('auth');

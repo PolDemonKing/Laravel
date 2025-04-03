@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Partida;
+use App\Models\Carta;
 use Illuminate\Support\Facades\Auth;
 
 class PartidaController extends Controller
@@ -21,17 +22,39 @@ class PartidaController extends Controller
 
     public function guardarPartida(Request $request)
     {
+        $userId = Auth::id();
+    
+        // Obtener la carta del jugador (player_card_id)
+        $playerCard = Carta::whereHas('users', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('tipo', 'player')->first();
+    
+        if (!$playerCard) {
+            return response()->json(['error' => 'No se encontró una carta de tipo player asociada al usuario.'], 404);
+        }
+    
+        // Validación de datos del Request
+        $validated = $request->validate([
+            'ronda' => 'integer|min:1',
+            'turno' => 'integer|min:1',
+            'enemigos' => 'array',
+            'objetos' => 'array',
+        ]);
+    
+        // Crear o actualizar partida
         $partida = Partida::updateOrCreate(
-            ['user_id' => Auth::id()],
+            ['user_id' => $userId],
             [
-                'ronda' => $request->input('ronda') ?? 1,
-                'turno' => $request->input('turno') ?? 1,
-                'energia' => $request->input('energia') ?? 3,
-                'maxEnergy' => $request->input('maxEnergy') ?? 3,
-                'datos' => json_encode($request->input('datos') ?? [])
+                'player_card_id' => $playerCard->id,
+                'ronda' => $validated['ronda'] ?? 1,
+                'turno' => $validated['turno'] ?? 1,
+                'enemigos' => $validated['enemigos'] ?? [],
+                'objetos' => $validated['objetos'] ?? [],
+                'energiaMax' => $playerCard->energiaMax ?? config('app.energiaMax'), // Valor de energiaMax
+                'energia' => $playerCard->energiaMax ?? config('app.energiaMax'), // Restablecer energía
             ]
         );
     
-        return response()->json(['success' => 'Partida guardada correctamente']);
+        return response()->json(['success' => 'Partida guardada correctamente', 'partida' => $partida]);
     }
 }
